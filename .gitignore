@@ -3,6 +3,7 @@
 *.o
 .~*
 *-env
+__pycache__
 
 echo-pair
 echo-boostq

@@ -16,15 +16,16 @@
 
 
 const char* client_inproc_ep = "inproc://echo-client";
-const char* client_ipc_ep = "ipc://echo-client.ipc";
+const char* client_ipc_ep = "ipc://client.ipc";
 const char* client_tcp_ep = "tcp://127.0.0.1:5555";
 
 
 const char* worker_inproc_ep = "inproc://echo-worker";
-const char* worker_ipc_ep = "ipc://echo-worker.ipc";
+const char* worker_ipc_ep = "ipc://worker.ipc";
 const char* worker_tcp_ep = "tcp://127.0.0.1:5556";
 
-const char* log_ep = "tcp://127.0.0.1:5557";
+const char* log_collect_ep = "tcp://127.0.0.1:5557";
+const char* log_broadcast_ep = "tcp://127.0.0.1:5558";
 
 
 /**********************************************************************

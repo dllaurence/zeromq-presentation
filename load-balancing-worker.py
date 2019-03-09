@@ -4,21 +4,24 @@
 #
 # Simple worker for the load-balancing server example
 
+
 import zmq
 
+from util import *
+
+
 context = zmq.Context()
-socket = context.socket(zmq.REQ)
-socket.connect("ipc://echo-worker.ipc")
-#socket.connect("tcp://127.0.0.1:5556")
+sock = context.socket(zmq.REQ)
+sock.connect(worker_ipc_ep)
 
 log_sock = context.socket(zmq.PUSH)
-log_sock.connect("tcp://127.0.0.1:5557")
+log_sock.connect(log_collect_ep)
 
-socket.send(b"READY")
+sock.send(b"READY")
 
-while (1):
-    request = socket.recv_multipart()
+while True:
+    request = sock.recv_multipart()
     print("Worker received: ", request[2])
     request[2] = b"Python REPLY"
-    socket.send_multipart(request)
-    log_sock.send(b"Python worker logging")
+    sock.send_multipart(request)
+    log_sock.send_multipart([b"worker-python", b"Python worker logging"])

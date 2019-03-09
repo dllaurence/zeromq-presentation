@@ -21,7 +21,8 @@ extern const char* worker_inproc_ep;
 extern const char* worker_ipc_ep;
 extern const char* worker_tcp_ep;
 
-extern const char* log_ep;
+extern const char* log_collect_ep;
+extern const char* log_broadcast_ep;
 
 
 // Facilities to work with std::string rather than zmq::message_t

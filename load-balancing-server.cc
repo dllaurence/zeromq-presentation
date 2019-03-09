@@ -38,8 +38,17 @@ void worker_main(zmq::context_t& context, const char* endpoint)
     zmq::socket_t worker_sock(context, ZMQ_REQ);
     worker_sock.connect(endpoint);
 
+#if 0
+    zmq::socket_t log_sock(context, ZMQ_PUSH);
+    log_sock.connect(log_collect_ep);
+#endif
+
     s_send(worker_sock, "READY");
     std::cout << "Worker sent 'READY'" << std::endl;
+#if 0
+    s_sendmore(log_sock, "worker-cpp");
+    s_send(log_sock, "Sent READY");
+#endif
 
     for (;;) {
         // Decode incoming frames
@@ -47,13 +56,19 @@ void worker_main(zmq::context_t& context, const char* endpoint)
         std::string empty = s_recv(worker_sock);
         assert(empty.size() == 0);
         std::string request = s_recv(worker_sock);
+
         std::cout << "Worker received request: " << request << "'" << std::endl;
+        //s_sendmore(log_sock, "worker-cpp");
+        //s_send(log_sock, "received request: " + request);
 
         // Assemble outgoing frames
         s_sendmore(worker_sock, client_addr);
         s_sendmore(worker_sock, "");
-        s_send    (worker_sock, "REPLY");
-        std::cout << "Worker sent 'REPLY'" << std::endl;
+        s_send    (worker_sock, "C++ REPLY");
+
+        std::cout << "Worker sent 'C++ REPLY'" << std::endl;
+        //s_sendmore(log_sock, "worker-cpp");
+        //s_send(log_sock, "sent reply: 'C++ REPLY'");
     }
 }
 
