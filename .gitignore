@@ -1,0 +1,10 @@
+*~
+*.sw?
+*.o
+.~*
+*-env
+
+echo-pair
+echo-boostq
+echo-lockingq
+load-balancing-server
