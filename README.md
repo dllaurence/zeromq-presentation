@@ -6,6 +6,8 @@
 
 Repo: [https://github.com/dllaurence/zeromq-presentation](https://github.com/dllaurence/zeromq-presentation)
 
+Slides: presentation.odp
+
 Everything released under the MIT license--use as you wish except for claiming
 you wrote it.
 

@@ -9,7 +9,7 @@
 #include <thread>
 #include <iostream>
 
-#include "load-balancing-util.hh"
+#include "util.hh"
 
 
 // inproc doesn't need any worker threads
@@ -44,7 +44,7 @@ int main()
     zmq::context_t context(io_threads);
     zmq::socket_t  sock(context, ZMQ_PAIR);
 
-    const char* url = "inproc://echo";
+    const char* url = client_inproc_ep;
     sock.bind(url); // for inproc bind() must happen first
 
     std::thread server_thread(server_main, std::ref(context), url);

@@ -23,13 +23,13 @@ all: $(EXECUTABLES)
 
 echo-lockingq.o: locking-queue.hh
 
-load-balancing-util.o: load-balancing-util.hh
+load-balancing-util.o: util.hh
 
-echo-pair.o: load-balancing-util.hh
-echo-pair: load-balancing-util.o
+echo-pair.o: util.hh
+echo-pair: util.o
 
-load-balancing-server.o: load-balancing-util.hh
-load-balancing-server: load-balancing-util.o
+load-balancing-server.o: util.hh
+load-balancing-server: util.o
 
 
 ######################################################################
