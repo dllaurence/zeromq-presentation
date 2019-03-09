@@ -4,7 +4,7 @@
 
 ## Given at SCALE on 3/9/2019
 
-Repo: <git@github.com:dllaurence/zeromq-presentation.git>
+Repo: [https://github.com/dllaurence/zeromq-presentation](https://github.com/dllaurence/zeromq-presentation)
 
 Everything released under the MIT license--use as you wish except for claiming
 you wrote it.
